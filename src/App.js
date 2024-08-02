@@ -24,15 +24,20 @@ const App = () => {
   }
 
   useEffect(()=>{
+    const isLoggedIn = localStorage.getItem('loggedIn') === 'true' ; 
+    setloggedIn(isLoggedIn)
     getData()
-  })
+  }, []);
 
   const handleLogin = () => {
     setloggedIn(true);
+    localStorage.setItem('loggedIn', 'true');
   };
-
-
-
+ 
+  const handleLogout = () => {
+    setloggedIn(false);
+    localStorage.removeItem('loggedIn')
+  };
   return (
      <>
      <Productcontext.Provider value={{data,setdata,cart,setcart,cartValue,setcartValue}}>
@@ -41,7 +46,7 @@ const App = () => {
       {loggedIn ? (
 
        <>
-        <Navbar setloggedIn={setloggedIn}/>
+        <Navbar setloggedIn={setloggedIn} onLogout={handleLogout}/>
         <Routes>
           <Route path='/' element={<Homepage/>}/>
           <Route path='/products' element={<Products/>} />
