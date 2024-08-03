@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Productcontext } from '../App'
-import { Link } from 'react-router-dom'
-// import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 
 const Cart = () => {
 
 const context = useContext(Productcontext)
+
+const Navigate = useNavigate()
 
 const [totalPrice, settotalPrice] = useState(0)
 
@@ -40,14 +41,17 @@ const [totalPrice, settotalPrice] = useState(0)
     }
 
   }
-  // Navigate to products page
-  const goToProductsPage = () =>{
-    <Link className='link' to='/products'>Homepage</Link>
+  const proceedToPayment = () =>{
+    Navigate('/payment');
   }
+  // Navigate to products page
+  // const goToProductsPage = () =>{
+  //   <Link className='link' to='/products'>Homepage</Link>
+  // }
   return (
      <>
       <div className='cart-page'>
-      <button className='products-page-button' onClick={goToProductsPage}> Go to Products Page</button>
+      <button className='products-page-button' onClick={()=> Navigate('/products') }> Go to Products Page</button>
     
       <button className='clear-cart-button' onClick={handleClear}>Clear Cart</button>
     {
@@ -64,10 +68,11 @@ const [totalPrice, settotalPrice] = useState(0)
           <h4>Price : {pro.price}</h4>
           <button className='remove-button' onClick={()=>handleClick(pro)}>Remove from Cart</button>
           </div>
-        )
+        ) 
       })}
      </div>
       <h1 className='total-price'>Total Price : {totalPrice}</h1>
+      <button onClick={proceedToPayment}> Proceed to Payment</button>
       </> 
       : 
       <>

@@ -7,6 +7,8 @@ import Products from './components/Products'
 import axios from 'axios'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from './components/Login'
+import Payment from './components/Payment'
+
 
 export const Productcontext = createContext()
 const url = "https://mobileproducts.onrender.com/products"
@@ -51,6 +53,7 @@ const App = () => {
           <Route path='/' element={<Homepage/>}/>
           <Route path='/products' element={<Products/>} />
           <Route path='/cart' element={<Cart/>} />
+          <Route path='/payment' element={<Payment/>} />
         </Routes>
 
        </>
