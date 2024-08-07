@@ -22,9 +22,11 @@ const handleLogin = () => {
         <form id="form1" className="form1">
             <input id="email" type="email" placeholder="Enter mail id" required value={email}
             onChange={(e) => setemail(e.target.value)} />
+            <p>Email:vishnu@gmail.com</p>
         <input id="psd" type="password" placeholder="password" required value={password}
             onChange={(e) => setpassword(e.target.value)}/>
-        {/* <label className="reme">
+            <p>Password:reddy</p>
+        {/* <label className="reme">  
             <input id="reme" type="checkbox"/>
          Remember Me
         </label> */}
